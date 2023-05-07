@@ -1,0 +1,583 @@
+body {
+    background-color: #0c1016;
+    padding: 15px;
+    font-family: "Arial";
+    margin: 0;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70px;
+    margin-bottom: 20px;
+    background-color: #33383e;
+    color: #a9b0b8;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    border-radius: 20px;
+}
+
+#div_chart_selection {
+    background-color: #0c1016;
+}
+
+.chart_selection {
+    display: inline-block;
+    width: 50%;
+    height: 30px;
+    border: 0;
+    border-radius: 20px 20px 0 0;
+    font-weight: bold;
+}
+
+#candlechart {
+    display: flex;
+}
+
+.chart_area_left {
+    display: inline-block;
+    width: 75%;
+}
+
+.chart_area_right {
+    display: inline-block;
+    width: 25%;
+    border-left-style: solid;
+    border-left-color: #0c1016;
+    border-left-width: 4px;
+}
+
+#buttonCandlechart {
+    background-color: #33383e;
+    color: #a9b0b8;
+}
+
+#buttonLinechart {
+    background-color: #a9b0b8;
+    color: #33383e;
+}
+
+.charts_left {
+    width: 96%;
+    margin: 0 2% 0 2%;
+}
+
+#datasetSelection {
+    width: 100%;
+    margin: 30px 0 20px 0;
+}
+
+.data_selection {
+    height: 25px;
+    width: 20%;
+    border: 0;
+    border-radius: 20px;
+    font-size: 0.95vw;
+}
+
+#button_microsoft {
+    margin-left: 15%;
+    background-color: #a9b0b8;
+    color: #33383e;
+    font-weight: bold;
+}
+
+#button_amazon {
+    margin: 0 5% 0 5%;
+    background-color: #e7880d;
+    color: #33383e;
+    font-weight: bold;
+}
+
+#button_apple {
+    margin-right: 15%;
+    background-color: #a9b0b8;
+    color: #33383e;
+    font-weight: bold;
+}
+
+#sliderContainer {
+    display: flex;
+    width: 100%;
+    margin: 30px 0 15px 0;
+}
+
+.sliderDisplayValue {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    width: 10%;
+    height: 30px;
+    background-color: #a9b0b8;
+    border-radius: 20px;
+    color: #33383e;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+#sliderDisplayLeftValue {
+    margin-left: 6%;
+    margin-right: 1%;
+}
+
+#sliderDisplayRightValue {
+    margin-right: 6%;
+    margin-left: 1%;
+}
+
+#candlechart {
+    background-color: #33383e;
+    border-radius: 0 0 20px 20px;
+}
+
+#barchart {
+    margin: 0 2% 30px 2%;
+}
+
+#linechart {
+    display: none;
+    background-color: #33383e; 
+    width: 100%; 
+    border-radius: 0 0 20px 20px;
+}
+
+#stockInformationHeader {
+    width: 90%;
+    margin: 30px 5% 0 5%;
+}
+
+.stockInformationContentContainer {
+    width: 90%;
+    margin: 0 5% 0 5%;
+}
+
+#stockInformationContentContainerMiddle {
+    margin: 15px 5% 15px 5%;
+}
+
+.stockInformationContent {
+    display: inline-block;
+    width: 50%;
+}
+
+.stockInformationLabel {
+    color: #e7880d;
+    font-weight: bold;
+    font-size: 0.95vw;
+}
+
+.stockInformationValue {
+    color: #a9b0b8;
+    font-weight: bold;
+    font-size: 1.35vw;
+}
+
+#stockName {
+    font-size: 2.2vw;
+}
+
+#tooltipExplanation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    /*background-color: #0c1016;*/
+    width: 100%;
+    height: 375px;
+    margin: 20px 0 20px 0;
+}
+
+#tooltip {
+    width: 100%;
+}
+
+#stockTooltipHeader {
+    margin: 0 5% 0 5%;
+}
+
+.stockTooltipContentContainerMiddle {
+    margin: 15px 5% 15px 5%;
+}
+
+#piechartHeader {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#piechart {
+    width: 60%;
+    margin: 0 20% 20px 20%;
+}
+
+.middle {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+	position: relative;
+	width: 76%;
+}
+
+.slider {
+	position: relative;
+	z-index: 1;
+	height: 8px;
+	margin: 0 15px;
+}
+.slider > .track {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	border-radius: 5px;
+	background-color: #e2b881;
+}
+.slider > .range {
+	position: absolute;
+	z-index: 2;
+	left: 25%;
+	right: 25%;
+	top: 0;
+	bottom: 0;
+	border-radius: 5px;
+	background-color: #e7880d;
+}
+.slider > .thumb {
+	position: absolute;
+	z-index: 3;
+	width: 20px;
+	height: 20px;
+	background-color: #e7880d;
+	border-radius: 50%;
+	box-shadow: 0 0 0 0 #e7890d39;
+	transition: box-shadow .3s ease-in-out;
+}
+.slider > .thumb.left {
+	left: 25%;
+	transform: translate(-10px, -6px);
+}
+.slider > .thumb.right {
+	right: 25%;
+	transform: translate(10px, -6px);
+}
+.slider > .thumb.hover {
+	box-shadow: 0 0 0 17px #e7890d39;
+}
+.slider > .thumb.active {
+	box-shadow: 0 0 0 17px #e7890d39;
+}
+
+input[type=range] {
+	position: absolute;
+	pointer-events: none;
+	z-index: 2;
+	height: 10px;
+	width: 100%;
+	opacity: 0;
+}
+input[type=range]::-webkit-slider-thumb {
+	pointer-events: all;
+	width: 30px;
+	height: 30px;
+	border-radius: 0;
+	border: 0 none;
+	background-color: #b369a8;
+	-webkit-appearance: none;
+}
+
+#market_information_area {
+    width: 25%;
+    border-right-style: solid;
+    border-right-color: #0c1016;
+    border-right-width: 4px;
+}
+
+#market_information {
+    width: 90%;
+    margin: 30px 5% 30px 5%;
+}
+
+.market_chart_button {
+    width: 45%;
+    height: 25px;
+    border: 0;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.75vw;
+}
+
+#graph_selection {
+    margin-top: 15px;
+}
+
+#button_linechart {
+    margin-right: 10%;
+    background-color: #e7880d;
+    color: #33383e;
+    font-size: 0.95vw;
+}
+
+#button_map {
+    background-color: #a9b0b8;
+    color: #33383e;
+    font-size: 0.95vw;
+}
+
+.checkboxes {
+    display: inline-block;
+    width: 50%;
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.toggle {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #a9b0b8;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.toggle:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #33383e;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .toggle {
+    background-color: #e7880d;
+}
+
+input:focus + .toggle {
+    box-shadow: 0 0 1px #33383e;
+}
+
+input:checked + .toggle:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.toggle.round {
+    border-radius: 34px;
+}
+
+.toggle.round:before {
+    border-radius: 50%;
+}
+
+#market_chart_area {
+    width: 75%;
+}
+
+#amazon_button {
+    background-color: rgb(237,173,8);
+}
+
+#apple_button {
+    background-color: rgb(115,175,72);
+}
+
+#google_button {
+    background-color: rgb(56,166,165);
+    margin-left: 12%;
+}
+
+#microsoft_button {
+    background-color: rgb(225,124,5);
+}
+
+#netflix_button {
+    background-color: rgb(204,80,62);
+    margin: 0 12% 0 4%;
+}
+
+/* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 0.95vw;
+}
+
+.custom-select select {
+    display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+    background-color: #e7880d;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #33383e transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #33383e transparent;
+    top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    color: #33383e;
+    height: 34px;
+    padding: 0 16px;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    background-color: #e7880d;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border-radius: 20px;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.checkboxCurveArea {
+    margin-top: 5px;
+}
+
+.market_information_linechart {
+    margin-top: 45px;
+}
+
+#focus_area {
+    width: 100%;
+    margin-top: 7px;
+}
+
+#focus_toggle {
+    width: 40%
+}
+
+#focus_selection {
+    width: 60%;
+}
+
+#focus_buttons {
+    margin-top: 5px;
+}
+
+.stock_button {
+    height: 25px;
+    width: 12%;
+    border: 0;
+    border-radius: 20px;
+    font-size: 0.95vw;
+    font-weight: bold;
+    color: #33383e;
+}
+
+.stock_button_middle {
+    margin-left: 4%;
+}
+
+#linechart_stock_selection {
+    width: 100%;
+    margin: 30px 0 15px 0;
+}
+
+#linechart_stocks {
+    margin: 0 2% 30px 2%;
+}
+
+.explanationHeader {
+    margin-top: 10px;
+    color: #e7880d;
+    font-weight: bold;
+    font-size: 0.86vw;
+}
+
+.explanationText {
+    color: #a9b0b8;
+    font-size: 0.8vw;
+}
+
+#treemap {
+    display: none;
+}
+
+#linechart_legend {
+    width: 100%;
+}
+
+#treemap_explanation {
+    display: none;
+    width: 100%;
+    margin-top: 45px;
+}
+
+.explanations {
+    display: none;
+    width: 90%;
+    margin: 0 5%;
+}
