@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="chartSelection.js"></script>
+        <script src="slider.js"></script>
+        <script src="stockSelection.js"></script>
+        <script src="boxplots.js"></script>
+        <script src="linechart.js"></script>
+        <script src="treemap.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+
+    <body>
+        <!-- ================= Überschrift ==================== -->
+        <div id="header"><div>Stock Market Analysis</div></div>
+
+        <!-- ================= Reiter mit "Stock Analysis" und "Market Analysis" ==================== -->
+        <div id="div_chart_selection">
+            <button id="buttonCandlechart" class="chart_selection">Stock Analysis</button><!--
+            --><button id="buttonLinechart" class="chart_selection">Market Analysis</button>
+        </div>
+
+        <!-- ================= Bereich "Stock Analysis" ==================== -->
+        <div id="candlechart" style="background-color: #33383e;">
+            <!-- ---------------- linker Bereich ----------------- -->
+            <div class="chart_area_left">
+                <!-- ---------------- Selektierung der Daten ----------------- -->
+                <div id="datasetSelection">
+                    <button id="button_microsoft" class="data_selection">Microsoft</button><!--
+                    --><button id="button_amazon" class="data_selection">Amazon</button><!--
+                    --><button id="button_apple" class="data_selection">Apple</button>
+                </div>
+                <div id="sliderContainer">
+                    <div id="sliderDisplayLeftValue" class="sliderDisplayValue"><div>2000</div></div>
+                    <div class="middle">
+                        <div class="multi-range-slider">
+                            <input type="range" id="input-left" min="0" max="24" value="0">
+                            <input type="range" id="input-right" min="0" max="24" value="24">
+                            <div class="slider">
+                                <div class="track"></div>
+                                <div class="range"></div>
+                                <div class="thumb left"></div>
+                                <div class="thumb right"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sliderDisplayRightValue" class="sliderDisplayValue"><div>2024</div></div>
+                </div>
+                <!-- ---------------- Visualisierungen (Liniendiagramm und Balkendiagramm) ----------------- -->
+                <div id="candlestickchart" class="charts_left"></div>
+                <div id="barchart" class="charts_left"></div>
+            </div>
+            <!-- ---------------- rechter Bereich ----------------- -->
+            <div class="chart_area_right">
+                <!-- ---------------- Informationen über die Aktie ----------------- -->
+                <div id="stockInformationHeader">
+                    <div class="stockInformationLabel">Information</div>
+                    <div id="stockName" class="stockInformationValue">Amazon.com Inc.</div>
+                </div>
+                <div id="stockInformationContentContainerMiddle" class="stockInformationContentContainer">
+                    <div class="stockInformationContent">
+                        <div class="stockInformationLabel">Symbol</div>
+                        <div id="stockSymbol" class="stockInformationValue">AMZ</div>
+                    </div><!--
+                    --><div class="stockInformationContent">
+                        <div class="stockInformationLabel">Type</div>
+                        <div class="stockInformationValue">Equity</div>
+                    </div>
+                </div>
+                <div class="stockInformationContentContainer">
+                    <div class="stockInformationContent">
+                        <div class="stockInformationLabel">ISIN</div>
+                        <div id="stockISIN" class="stockInformationValue">US0231351067</div>
+                    </div><!--
+                    --><div class="stockInformationContent">
+                        <div class="stockInformationLabel">WKN</div>
+                        <div id="stockWKN" class="stockInformationValue">906866</div>
+                    </div>
+                </div>
+                <div id="tooltipExplanation">
+                    <!-- ---------------- Tooltips ----------------- -->
+                    <div id="tooltip">
+                        <div id="stockTooltipHeader">
+                            <div class="stockInformationLabel">Period</div>
+                            <div id="stockPeriod" class="stockInformationValue">2000 - 2024</div>
+                        </div>
+                        <div class="stockInformationContentContainer stockTooltipContentContainerMiddle">
+                            <div class="stockInformationContent">
+                                <div class="stockInformationLabel">Highest</div>
+                                <div id="stockHighest" class="stockInformationValue">000.00$</div>
+                            </div><!--
+                            --><div class="stockInformationContent">
+                                <div class="stockInformationLabel">Lowest</div>
+                                <div id="stockLowest" class="stockInformationValue">000.00$</div>
+                            </div>
+                        </div>
+                        <div class="stockInformationContentContainer stockTooltipContentContainerMiddle">
+                            <div class="stockInformationContent">
+                                <div class="stockInformationLabel">Open</div>
+                                <div id="stockOpen" class="stockInformationValue">000.00$</div>
+                            </div><!--
+                            --><div class="stockInformationContent">
+                                <div class="stockInformationLabel">Close</div>
+                                <div id="stockClose" class="stockInformationValue">000.00$</div>
+                            </div>
+                        </div>
+                        <div class="stockInformationContentContainer stockInformationContent">
+                            <div class="stockInformationLabel">Volume</div>
+                            <div id="stockVolume" class="stockInformationValue">60000 m.</div>
+                        </div>
+                    </div>
+                    <!-- ---------------- Grafikerklärungen ----------------- -->
+                    <div id="candlechart_explanation" class="explanations">
+                        <div class="stockInformationLabel">Explanation</div>
+                        <div class="explanationText">The graph displays the stock performance of the selected stock in the period from 2000 to March 2023 or in the user's selected time frame in the form of a candlestick chart. The values are denominated in US dollars.</div>
+                        <div class="explanationHeader">Candle</div>
+                        <div class="explanationText">A candle in a stock chart is a visual representation of the price movement of a stock during a particular time frame. It is made up of a rectangular body and two thin lines, known as wicks or shadows, that extend from the top and bottom of the body. The body represents the opening and closing prices of the stock during the time period, while the wicks show the highest and lowest prices that were reached.</div>
+                        <div class="explanationHeader">Color</div>
+                        <div class="explanationText">The color indicates whether the stock has made a profit or loss during the month. Red represents a decline in the stock's value, while green indicates an increase in the stock's value.</div>
+                    </div>
+                    <div id="barchart_explanation" class="explanations">
+                        <div class="stockInformationLabel">Explanation</div>
+                        <div class="explanationText">The volume of a stock, as displayed on the graph, refers to the total number of shares of that stock that were traded during a specific time period, which is represented as a month on the graph. The graph covers the time period from 2000 to March 2023. This volume is typically measured in millions.</div>
+                        <div class="explanationText">The trading volume of a stock represents the aggregate number of shares traded during a specific period of time. It is a measure of how actively a stock is being bought and sold on the market. High trading volume may indicate strong investor interest in the stock, while low trading volume may indicate a lack of interest or uncertainty among investors.</div>
+                        <div class="explanationHeader">Color</div>
+                        <div class="explanationText">The color indicates whether the stock has made a profit or loss during the month. Red represents a decline in the stock's value, while green indicates an increase in the stock's value.</div>
+                    </div>
+                    <div id="gauge_explanation" class="explanations">
+                        <div class="stockInformationLabel">Explanation</div>
+                        <div class="explanationText">The display indicates the average annual performance of the stock during the selected time period. The average annual performance for stocks is approximately 10%.</div>
+                        <div class="explanationHeader">Range</div>
+                        <div class="explanationText">The green area represents the range of a stock's profit, ranging from 20% to 10%. The yellow area corresponds to a profit of 10% down to 0%. The orange area represents a loss between 0% and 10%, while the red area represents a loss ranging from 10% to 20%.</div>
+                    </div>
+                </div>
+                <!-- ---------------- Visualisierung (Messgerätdiagramm) ----------------- -->
+                <div id="piechartHeader" class="stockInformationLabel">Performance</div>
+                <div id="piechart"></div>
+            </div>
+        </div>
+        <!-- ================= Bereich "Market Analysis" ==================== -->
+        <div id="linechart">
+            <div id="market_information_area">
+                <div id="market_information">
+                    <div class="stockInformationLabel">Graph Selection</div>
+                    <div id="graph_selection">
+                        <button id="button_linechart" class="market_chart_button">Linechart</button><!--
+                        --><button id="button_map" class="market_chart_button">Map</button>
+                    </div>
+                    <!-- ---------------- Informationen und Funktionen zum Liniendiagramm ----------------- -->
+                    <div id="linechart_legend">
+                        <!-- ---------------- Funktionen zum Liniendiagramm ----------------- -->
+                        <div class="center market_information_linechart">
+                            <div class="checkboxes">
+                                <div class="stockInformationLabel center"><div>Curve</div></div>
+                                <div class="center checkboxCurveArea">
+                                    <div>
+                                        <label class="switch">
+                                            <input id="checkbox_line" type="checkbox" checked>
+                                            <span class="toggle round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div><!--
+                            --><div class="checkboxes">
+                                <div class="stockInformationLabel center"><div>Area</div></div>
+                                <div class="center checkboxCurveArea">
+                                    <div>
+                                        <label class="switch">
+                                            <input id="checkbox_area" type="checkbox">
+                                            <span class="toggle round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="focus_area">
+                            <div class="stockInformationLabel">Focus</div>
+                            <div id="focus_buttons" class="center">
+                                <div id="focus_toggle">
+                                    <label class="switch">
+                                        <input id="checkbox_focus" type="checkbox">
+                                        <span class="toggle round"></span>
+                                    </label>
+                                </div>
+                                <div id="focus_selection">
+                                    <div class="custom-select" style="width:100%;">
+                                        <select id="focusStockSelection">
+                                            <option value="noSelection">Select Stock</option>
+                                            <option value="google">Google</option>
+                                            <option value="apple">Apple</option>
+                                            <option value="amazon">Amazon</option>
+                                            <option value="microsoft">Microsoft</option>
+                                            <option value="netflix">Netflix</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ---------------- Grafikerklärung zum Liniendiagramm ----------------- -->
+                        <div class="market_information_linechart">
+                            <div class="stockInformationLabel">Explanation</div>
+                            <div class="explanationText">The graph illustrates the stock market performance of five major technology companies, namely Google, Apple, Amazon, Microsoft, and Netflix. The time range covered by the graph spans from the year 2000 up to March 2023, allowing for a comprehensive analysis of each company's stock prices. The visual representation of the stock trends of these companies provides valuable insights into their respective financial performances, market positions, and growth potentials. Additionally, it should be noted that the values on the graph are denominated in US dollars.</div>
+                            <div class="explanationHeader">Curve</div>
+                            <div class="explanationText">The curve of a stock typically describes the movement of its market price over time. This curve can be either upward, indicating a rising trend in price, or downward, indicating a declining trend in price.</div>
+                            <div class="explanationHeader">Area</div>
+                            <div class="explanationText">The area under the curve of a stock represents the cumulative value of the stock over a given period of time. Specifically, the area under the curve represents the total dollar value of the stock for the time period being analyzed.</div>
+                            <div class="explanationHeader">Focus</div>
+                            <div class="explanationText">With the focus turned on and a stock selected, values at a specific point in time can be determined by hovering over the graph.</div>
+                        </div>
+                    </div>
+                    <!-- ---------------- Grafikerflärung zur Treemap ----------------- -->
+                    <div id="treemap_explanation">
+                        <div class="stockInformationLabel">Explanation</div>
+                        <div class="explanationText">The stock map displays the distribution of stock performance over the period from 2000 to March 2023. If a stock has gone public later, that moment has been set as the start point for that stock. This map provides an overview of the relative performance of each stock, and it can help to identify trends and patterns across the market. By comparing the trajectories of different stocks, investors can gain insight into broader trends within the stock market.</div>
+                        <div class="explanationHeader">Size</div>
+                        <div class="explanationText">The size of a field of a stock on the stock map describes the average daily performance of the stock relative to other stocks. A stock field may be smaller than another if the average daily performance is lower than that of the other stock.</div>
+                        <div class="explanationText">The size of a subfield within a stock field describes the frequency of a particular daily performance of that stock relative to the frequencies of other daily performances. This means that a smaller subfield indicates that the particular daily performance is less frequent compared to other daily performances of the same stock. The subfield size is determined by the number of occurrences of that specific daily performance within the total timeframe of the stock data.</div>
+                        <div class="explanationHeader">Color</div>
+                        <div class="explanationText">The color represents the value of the daily performance of that stock. A stock box that is colored green indicates a higher daily performance value, while a stock box that is colored red indicates a lower daily performance value. The degree of greenness or redness of the color corresponds to the magnitude of the performance value. </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ---------------- Bereich der Visualisierungen ----------------- -->
+            <div id="market_chart_area">
+                <!-- ---------------- Visualisierung mit Filtermöglichkeit (Liniendiagramm) ----------------- -->
+                <div id="linechart_area">
+                    <div id="linechart_stock_selection">
+                        <button id="google_button" class="stock_button">Google</button><!--
+                        --><button id="apple_button" class="stock_button stock_button_middle">Apple</button><!--
+                        --><button id="amazon_button" class="stock_button stock_button_middle">Amazon</button><!--
+                        --><button id="microsoft_button" class="stock_button stock_button_middle">Microsoft</button><!--
+                        --><button id="netflix_button" class="stock_button">Netflix</button>
+                    </div>
+                    <div id="linechart_stocks"></div>
+                </div>
+                <!-- ---------------- Visualisierung (Treemap) ----------------- -->
+                <div id="treemap"></div>
+            </div>
+        </div>
+
+    </body>
+</html>
